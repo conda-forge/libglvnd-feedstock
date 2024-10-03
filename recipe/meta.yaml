@@ -12,7 +12,7 @@ source:
 
 build:
   skip: true  # [not linux]
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -24,8 +24,7 @@ requirements:
   host:
     - xorg-libx11
     - xorg-libxext
-    - xorg-xextproto
-    - xorg-glproto
+    - xorg-xorgproto
 
 outputs:
   - name: libglvnd
@@ -133,12 +132,10 @@ outputs:
         - {{ pin_subpackage('libglx', exact=True) }}
         - xorg-libx11
         - xorg-libxext
-        - xorg-xextproto
-        - xorg-glproto
+        - xorg-xorgproto
       run:
         - {{ pin_subpackage('libglx', exact=True) }}
-        - xorg-xextproto
-        - xorg-glproto
+        - xorg-xorgproto
     test:
       requires:
         - pkg-config
