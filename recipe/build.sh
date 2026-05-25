@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e -x
 
+sed -i.bak "s/@TARGET_MULTIARCH@/${CONDA_TOOLCHAIN_HOST/conda-/}/g" src/EGL/meson.build
+cat src/EGL/meson.build
+
 # Get meson to find pkg-config when cross compiling
 export PKG_CONFIG="${BUILD_PREFIX}/bin/pkg-config"
 

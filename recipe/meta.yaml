@@ -12,7 +12,7 @@ source:
 
 build:
   skip: true  # [not linux]
-  number: 2
+  number: 3
 
 requirements:
   build:
@@ -21,6 +21,7 @@ requirements:
     - meson
     - pkg-config
     - ninja
+    - sed
   host:
     - xorg-libx11
     - xorg-libxext
