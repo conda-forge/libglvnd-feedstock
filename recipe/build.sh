@@ -7,9 +7,15 @@ cat src/EGL/meson.build
 # Get meson to find pkg-config when cross compiling
 export PKG_CONFIG="${BUILD_PREFIX}/bin/pkg-config"
 
+ASM=enabled
+if [[ $target_platform == "linux-riscv64" ]]; then
+    # riscv is missing https://gitlab.freedesktop.org/glvnd/libglvnd/-/merge_requests/287
+    ASM=disabled
+fi
+
 meson setup builddir \
     ${MESON_ARGS} \
-    -Dasm=auto \
+    -Dasm=${ASM} \
     -Dx11=enabled \
     -Degl=true \
     -Dglx=enabled \
